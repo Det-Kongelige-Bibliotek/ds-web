@@ -42,6 +42,8 @@
 </template>
 
 <script>
+import { searchService } from '../services/search-service'
+
 export default {
   name: 'Search',
   data () {
@@ -51,7 +53,8 @@ export default {
   },
   methods: {
     submitSearch: function () {
-      alert('Du søgte på: ' + this.searchQuery)
+      searchService.search(this.searchQuery)
+      // alert('Du søgte på: ' + this.searchQuery)
     }
   }
 

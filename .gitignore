@@ -6,7 +6,7 @@ node_modules
 .env.local
 .env.*.local
 
-# Vue proxy conf
+# Vue proxy conf etc.
 vue.config.js
 
 # Log files
