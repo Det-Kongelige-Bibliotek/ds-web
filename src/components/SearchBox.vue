@@ -52,13 +52,23 @@ export default {
       searchResult: state => state.search.all.searchResult
     })
   },
+  mounted: function () {
+    if (this.$route.query.q) {
+      this.doSearch(this.$route.query.q)
+    }
+  },
   methods: {
     ...mapActions('search', ['doSearch']),
+    setUrlParameter: function () {
+      this.$router.replace({ query: { q: this.searchQuery } })
+    },
     submitSearch: function () {
+      this.setUrlParameter()
       this.doSearch(this.searchQuery)
     },
     submitMobileSearch: function () {
       document.body.classList.toggle('menu-open')
+      this.setUrlParameter()
       this.doSearch(this.searchQuery)
     }
     // alert(this.$options.filters.capitalize(this.$t('search.youSearchedFor'), { onlyFirstLetter: true }) + ': ' + this.searchQuery)
